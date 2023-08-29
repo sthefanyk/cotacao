@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import ifpr.pgua.eic.cotacao.models.Cotacao;
 import ifpr.pgua.eic.cotacao.models.repositories.CotacaoRepository;
 import ifpr.pgua.eic.cotacao.models.results.Result;
+import ifpr.pgua.eic.cotacao.models.results.SuccessResult;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -32,7 +33,13 @@ public class GetCotacaoViewModel {
         //     cotacoes.add(new RowCotacao(cotacao));
         // }
 
+        // pegar os nomes
+
         cotacoes.add(new RowCotacao(repo.getCotacao()));
+
+        Result msg = repo.insert();
+        alertProperty.setValue(msg);
+        return msg instanceof SuccessResult;
     }
 
     public ObservableList<RowCotacao> getCotacoes() {

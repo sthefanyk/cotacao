@@ -3,7 +3,8 @@ package ifpr.pgua.eic.cotacao;
 import ifpr.pgua.eic.cotacao.controllers.CotacaoController;
 import ifpr.pgua.eic.cotacao.controllers.Principal;
 import ifpr.pgua.eic.cotacao.controllers.viewmodel.GetCotacaoViewModel;
-import ifpr.pgua.eic.cotacao.models.daos.APICotacaoDAO;
+import ifpr.pgua.eic.cotacao.models.daos.JDBCCotacaoDAO;
+import ifpr.pgua.eic.cotacao.models.FabricaConexoes;
 import ifpr.pgua.eic.cotacao.models.daos.CotacaoDAO;
 import ifpr.pgua.eic.cotacao.models.repositories.CotacaoRepository;
 import io.github.hugoperlin.navigatorfx.BaseAppNavigator;
@@ -21,7 +22,7 @@ public class App extends BaseAppNavigator {
     public void init() throws Exception {
         super.init();
 
-        cotacaoDAO = new APICotacaoDAO();
+        cotacaoDAO = new JDBCCotacaoDAO(FabricaConexoes.getInstance());
         cotacaoRepo = new CotacaoRepository(cotacaoDAO);
     }
 

@@ -1,14 +1,11 @@
-use musicas;
+use cotacao;
 
-CREATE TABLE IF NOT EXISTS playlist_generos (
+CREATE TABLE IF NOT EXISTS cotacao (
     id int NOT NULL AUTO_INCREMENT,
-    nome varchar(255) NOT NULL,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS playlist_artistas (
-    id int NOT NULL AUTO_INCREMENT,
-    nome varchar(255) NOT NULL,
-    contato varchar(255) NOT NULL,
+    name varchar(255) NOT NULL,
+    max varchar(255) NOT NULL,
+    min varchar(255) NOT NULL,
+    bid varchar(255) NOT NULL,
+    datetime varchar(255) NOT NULL,
     PRIMARY KEY (id)
 );
